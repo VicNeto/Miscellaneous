@@ -1,0 +1,27 @@
+#Fill a square matrix of n x n in a spiral order
+# just for fun
+
+def spiralNumbers(n):
+    m=[[0]*n for i in range(n)]
+    d='r'
+    j,k=0,0
+    for i in range(n**2):
+        m[j][k]=i+1
+        if d=='r' and k+1<n and m[j][k+1]==0:
+            k+=1
+        elif d=='r': 
+            d='d'
+        if d=='d' and j+1<n and m[j+1][k]==0:
+            j+=1
+        elif d=='d': 
+            d='l'
+        if d=='l' and k-1>=0 and m[j][k-1]==0:
+            k-=1
+        elif d=='l': 
+            d='u'
+        if d=='u' and m[j-1][k]==0:
+            j-=1
+        elif d=='u': 
+            d='r'
+            k+=1
+    return m
